@@ -1,0 +1,24 @@
+{
+  "name": "facebookautoinvite",
+  "version": "1.0.0",
+  "description": "Chrome extension that auto Invite people who likes your page posts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Linkmetal/FacebookAutoInvite.git"
+  },
+  "keywords": [
+    "auto",
+    "like",
+    "facebook"
+  ],
+  "author": "Carlos Javier Díaz Falcón (Linkmetal)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Linkmetal/FacebookAutoInvite/issues"
+  },
+  "homepage": "https://github.com/Linkmetal/FacebookAutoInvite#readme"
+}
