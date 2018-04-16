@@ -8,7 +8,7 @@ console.log("lodaded");
 function gotMessage(message, sender, sendResponse){
     if(message.txt === "hello"){  
         console.log("Entro padentro");
-        autoInvite();
+        autoInvite(0, 0);
     }
 }
 
@@ -16,13 +16,15 @@ function autoInvite(p, a){
     let prevLength = p;
     let actualLength = a;
     
-        let buttons = document.getElementsByClassName('_42fr');
+        let buttons = document.querySelectorAll('._4t2a ._42ft');
         actualLength = buttons.length;
 
         for(let i = prevLength; i < actualLength; i++){
-            // console.log($(buttons[i]).attr("disabled"));
-            if($(buttons[i]).attr("disabled") !== "disabled"){
-                buttons[i].click();
+            console.log(buttons[i].getAttribute('ajaxify'));
+            if(buttons[i].getAttribute('ajaxify') != null){
+                if(buttons[i].getAttribute('ajaxify').indexOf('invite') != -1){
+                    buttons[i].click();
+                }
             }
         }
         let seeMore = document.querySelector("#reaction_profile_pager > div > a");
@@ -31,7 +33,7 @@ function autoInvite(p, a){
         }
         setTimeout(function(){
             prevLength = actualLength;
-            buttons = document.getElementsByClassName('_42fr');
+            let buttons = document.querySelectorAll('._4t2a ._42ft');
             actualLength = buttons.length;
             if(prevLength !== actualLength){
                 autoInvite(prevLength, actualLength);
