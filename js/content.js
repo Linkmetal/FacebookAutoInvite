@@ -2,6 +2,7 @@
 //products out of stock
 //input type of product, and check if all have the same price
 
+let invited = 0;
 
 chrome.runtime.onMessage.addListener(gotMessage);
 console.log("lodaded");
@@ -24,6 +25,7 @@ function autoInvite(p, a){
             if(buttons[i].getAttribute('ajaxify') != null){
                 if(buttons[i].getAttribute('ajaxify').indexOf('invite') != -1){
                     buttons[i].click();
+                    invited++;
                 }
             }
         }
