@@ -19,15 +19,14 @@ function autoInvite(p, a){
         let buttons = document.getElementsByClassName('_42fr');
         actualLength = buttons.length;
 
-        console.log(actualLength);
-
-        for(let i = prevLength + 1; i < actualLength; i++){
-            console.log("Te invito y te golpeo");
-            buttons[i].click();
+        for(let i = prevLength; i < actualLength; i++){
+            // console.log($(buttons[i]).attr("disabled"));
+            if($(buttons[i]).attr("disabled") !== "disabled"){
+                buttons[i].click();
+            }
         }
         let seeMore = document.querySelector("#reaction_profile_pager > div > a");
         if(seeMore != null){
-            console.log("Veo mas")
             seeMore.click();
         }
         setTimeout(function(){
