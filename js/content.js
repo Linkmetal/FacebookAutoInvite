@@ -4,7 +4,7 @@
 
 
 chrome.runtime.onMessage.addListener(gotMessage);
-
+console.log("lodaded");
 function gotMessage(message, sender, sendResponse){
     if(message.txt === "hello"){  
         console.log("Entro padentro");
@@ -12,16 +12,31 @@ function gotMessage(message, sender, sendResponse){
     }
 }
 
-function autoInvite(){
-    while(document.querySelector("#reaction_profile_pager > div > a") != null){
-        console.log("Veo mas")
-        document.querySelector("#reaction_profile_pager > div > a").click();
-    }
+function autoInvite(p, a){
+    let prevLength = p;
+    let actualLength = a;
     
-    let buttons = document.getElementsByClassName('_42fr');
+        let buttons = document.getElementsByClassName('_42fr');
+        actualLength = buttons.length;
+
+        console.log(actualLength);
+
+        for(let i = prevLength + 1; i < actualLength; i++){
+            console.log("Te invito y te golpeo");
+            buttons[i].click();
+        }
+        let seeMore = document.querySelector("#reaction_profile_pager > div > a");
+        if(seeMore != null){
+            console.log("Veo mas")
+            seeMore.click();
+        }
+        setTimeout(function(){
+            prevLength = actualLength;
+            buttons = document.getElementsByClassName('_42fr');
+            actualLength = buttons.length;
+            if(prevLength !== actualLength){
+                autoInvite(prevLength, actualLength);
+            }
+        }, 2000)
     
-    for(elm of buttons){
-        console.log("Te invito y te golpeo")
-        elm.click();
-    }
 }
