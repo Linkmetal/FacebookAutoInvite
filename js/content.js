@@ -20,6 +20,7 @@ function gotMessage(message, sender, sendResponse){
 
 function openPost(ind){
     if(ind < posts.length){
+        posts[ind].scrollIntoView({block: "start", behavior: "instant"});
         posts[ind].click();
         autoInvite(0, 0);
     }
@@ -33,11 +34,12 @@ function autoInvite(p, a){
     actualLength = buttons.length;
 
     for(let i = prevLength; i < actualLength; i++){
-        buttons[i].scrollIntoView( true );
+        buttons[i].scrollIntoView({block: "start", behavior: "smooth"});
         if(buttons[i].getAttribute('ajaxify') != null){
             if(buttons[i].getAttribute('ajaxify').indexOf('invite') != -1){
                 buttons[i].click();
                 invited++;
+                console.log(invited);
             }
         }
     }
@@ -55,8 +57,12 @@ function autoInvite(p, a){
         }
         else{
             document.querySelector("._4t2a .layerCancel").click();
+            window.scrollTo(0,document.body.scrollHeight);
+            posts = document.querySelectorAll("._1xnd ._2x4v");
             index++;
-            openPost(index);
+            setTimeout(function(){
+                openPost(index);
+            }, 1000);
         }
     }, 2000);
 }
