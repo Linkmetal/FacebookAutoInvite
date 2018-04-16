@@ -15,8 +15,6 @@ function gotMessage(message, sender, sendResponse){
         posts = document.querySelectorAll("._1xnd ._2x4v");
         console.log(posts);
         openPost(index);
-        //autoInvite(0, 0);
-        // alert("You have invited " + invited + "people");
     }
 }
 
@@ -35,10 +33,9 @@ function autoInvite(p, a){
     actualLength = buttons.length;
 
     for(let i = prevLength; i < actualLength; i++){
+        buttons[i].scrollIntoView( true );
         if(buttons[i].getAttribute('ajaxify') != null){
             if(buttons[i].getAttribute('ajaxify').indexOf('invite') != -1){
-                var top = $(button[i]).position().top;
-                $("._5i_p").scrollTop(top);
                 buttons[i].click();
                 invited++;
             }
@@ -63,6 +60,3 @@ function autoInvite(p, a){
         }
     }, 2000);
 }
-
-//_1xnd post entero
-//_2x4v link de los me gusta
