@@ -10,7 +10,7 @@ let index = 0;
 chrome.runtime.onMessage.addListener(gotMessage);
 console.log("lodaded");
 function gotMessage(message, sender, sendResponse){
-    if(message.txt === "hello"){  
+    if(message.txt === "start"){  
         console.log("Entro padentro");
         posts = document.querySelectorAll("._1xnd ._2x4v");
         console.log(posts);
