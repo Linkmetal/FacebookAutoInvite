@@ -1,12 +1,14 @@
 let invited = 0; //people invited
 let index = 0; //index of the actual post
 let posts; //collection of posts
+let maxPosts;//maximum number of posts
 
 chrome.runtime.onMessage.addListener(gotMessage);
 console.log("FacebookAutoInvite loaded.");
 
 function gotMessage(message, sender, sendResponse){
     if(message.txt === "start"){  
+        maxPosts = message.maxPosts;
         posts = document.querySelectorAll("._1xnd ._2x4v");
         console.log(posts);
         openPost(index);
@@ -14,10 +16,12 @@ function gotMessage(message, sender, sendResponse){
 }
 
 function openPost(ind){ //open a post
-    if(ind < posts.length){
-        posts[ind].scrollIntoView({block: "start", behavior: "instant"});
-        posts[ind].click();
-        autoInvite(0, 0);
+    if(maxPosts == 0 || ind <= maxPosts - 1){
+        if(ind < posts.length){
+            posts[ind].scrollIntoView({block: "start", behavior: "instant"});
+            posts[ind].click();
+            autoInvite(0, 0);
+        }
     }
 }
 
