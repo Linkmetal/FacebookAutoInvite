@@ -1,14 +1,10 @@
-//check if price is 0
-//products out of stock
-//input type of product, and check if all have the same price
-
-
 let invited = 0; //people invited
 let index = 0; //index of the actual post
 let posts; //collection of posts
 
 chrome.runtime.onMessage.addListener(gotMessage);
 console.log("FacebookAutoInvite loaded.");
+
 function gotMessage(message, sender, sendResponse){
     if(message.txt === "start"){  
         posts = document.querySelectorAll("._1xnd ._2x4v");
@@ -38,7 +34,6 @@ function autoInvite(p, a){
             buttons[i].click();
             invited++;
             console.log(invited);
- 
         }
     }
 
