@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" style="min-width:500px;">
+<html xmlns="http://www.w3.org/1999/xhtml" style="min-width:500px; height: 1000px;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="css/popup.css">
     <title>FacebookAutoInvite</title>
 </head>
 <body>
@@ -12,6 +14,13 @@
         Number of posts to auto invite people (0 is no limit):&nbsp;<input type="number" id="maxPosts" min="0" value="0">
     </label></br></br>
     <button id="startButton">Start!</button>
+    <div id="urlList">
+
+    </div><br>
+    <label for="maxPosts">
+            URL to add:&nbsp;<input type="text" id="newUrl" min="0" value="0">
+    </label>    
+    <button id="addButton">Add</button>
     <script type="text/javascript" src="js/popup.js"></script>
 </body>
 </html>
