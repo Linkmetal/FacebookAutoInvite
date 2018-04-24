@@ -5,11 +5,11 @@ if($(document).ready()){
     button.addEventListener('click', startScript);
     document.getElementById("addButton").addEventListener("click", addUrl);
     chrome.storage.sync.get(['UrlList'], function(result) {
-        if(result != null){
+        if(result.UrlList != null){
             urls = result.UrlList;
             console.log(urls);
             for(let i = 0; i < urls.length; i++){
-                $("#urlList").append("<p>" + urls[i] + "</p>");
+                $("#urlList").append("<input type='checkbox' name='urls' class='urls' checked='true'>" + urls[i] + "</input><br/>");
             }
         }
     });
@@ -30,10 +30,17 @@ function startScript(){
 
 function addUrl(){
     let url = document.getElementById("newUrl").value;
-    urls.push(url);
-    $("#urlList").append("<p>" + url + "</p>");
-    chrome.storage.sync.set({"UrlList": urls}, function() {
-        console.log("Url saved");
-    });
+    let re = new RegExp(/(https?:\/\/[^\s]+)/g);
+    if(re.test(url) && urls.indexOf(url) == -1){
+        urls.push(url);
+        $("#urlList").append("<input type='checkbox' name='urls' class='urls' checked='true'>" + url + "</input><br/>");
+        document.getElementById("newUrl").value = "";
+        chrome.storage.sync.set({"UrlList": urls}, function() {
+            console.log("Url saved");
+        });
+    }
+    else{
+        alert("URL not valid or already on the list.");
+    }
 }
 

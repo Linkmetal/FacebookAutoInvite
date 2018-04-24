@@ -8,6 +8,7 @@ chrome.runtime.onMessage.addListener(gotMessage);
 console.log("FacebookAutoInvite loaded.");
 
 function gotMessage(message, sender, sendResponse){
+    console.log(message.txt);
     if(message.txt === "start"){  
         maxPosts = message.maxPosts;
         urlList = message.urlList;
@@ -15,11 +16,12 @@ function gotMessage(message, sender, sendResponse){
     }
     if(message.txt === "next"){
         setTimeout(function(){
+            console.log("Next")
             maxPosts = message.maxPosts;
             urlList = message.urlList;
             urlList.shift();
             getPosts();
-        }, 3000);
+        }, 10000);
     }
 }
 
