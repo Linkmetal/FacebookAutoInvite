@@ -29,12 +29,13 @@ function getPosts(){
     posts = document.querySelectorAll("._1xnd ._2x4v");
     console.log(posts);
     openPost(index);
+    window.scrollBy(0, 999999);
 }
 
 function openPost(ind){ //open a post
     if(maxPosts == 0 || ind < maxPosts){
         if(ind < posts.length){
-            posts[ind].scrollIntoView({block: "start", behavior: "instant"});
+            //posts[ind].scrollIntoView({block: "start", behavior: "instant"});
             posts[ind].click();
             autoInvite(0, 0);
         }
@@ -47,7 +48,6 @@ function openPost(ind){ //open a post
     else{
         if(urlList.length != 0){
             chrome.runtime.sendMessage({urlList: urlList, maxPosts: maxPosts});
-
         }
     }
 }
