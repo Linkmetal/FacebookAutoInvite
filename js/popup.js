@@ -6,6 +6,7 @@ if($(document).ready()){
     document.getElementById("addButton").addEventListener("click", addUrl);
     document.getElementById("checkAll").addEventListener("click", checkAll);
     document.getElementById("unCheckAll").addEventListener("click", unCheckAll);
+    document.getElementById("deleteChecked").addEventListener("click", deleteChecked);
     chrome.storage.sync.get(['UrlList'], function(result) {
         if(result.UrlList != null){
             urls = result.UrlList;
@@ -64,5 +65,25 @@ function unCheckAll(){
     let checkboxes = document.querySelectorAll(".urls");
     for(let i = 0; i < checkboxes.length; i++){
         checkboxes[i].checked = false;
+    }
+}
+
+function deleteChecked(){
+    let texts = $(".urls:checked + span");
+    let checkboxes = $(".urls:checked");
+    if(confirm("Do you want to delete all the checked URL? Number of elements: " + checkboxes.length + ".")){
+        for(let i = 0; i < checkboxes.length; i++){
+            $(texts[i]).remove();
+            $(checkboxes[i]).remove();
+        }
+        urls = [];
+        texts = $(".urls + span");
+        for(let i = 0; i < texts.length; i++){
+            urls.push($(texts[i]).text());
+        }
+        console.log(urls);
+        chrome.storage.sync.set({"UrlList": urls}, function() {
+            console.log("Url saved");
+        });
     }
 }

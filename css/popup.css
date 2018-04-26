@@ -4,3 +4,9 @@
     overflow-y: scroll;
     border: solid thin black;
 }
+
+#deleteChecked{
+    background-color:#e51309;
+    font-weight: bolder;
+    float: right;
+}

@@ -41,7 +41,6 @@ function openPost(ind){ //open a post
         else{
             if(urlList.length != 0){
                 chrome.runtime.sendMessage({urlList: urlList, maxPosts: maxPosts});
-    
             }
         }
     }
