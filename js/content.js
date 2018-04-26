@@ -65,7 +65,7 @@ function autoInvite(p, a){
         if(buttons[i].getAttribute('ajaxify') != null && buttons[i].getAttribute('ajaxify').indexOf('invite') != -1){ //check if the button is an invite button and if its active
             buttons[i].click();
             invited++;
-            console.log(invited);
+            console.log(invited);   
         }
     }
 
@@ -84,6 +84,7 @@ function autoInvite(p, a){
             document.querySelector("._4t2a .layerCancel").click(); //get the close button
             window.scrollTo(0,document.body.scrollHeight);
             posts = document.querySelectorAll("._1xnd ._2x4v");
+            console.log(posts);
             index++;
             setTimeout(function(){
                 openPost(index);

@@ -4,6 +4,8 @@ if($(document).ready()){
     var button = document.getElementById("startButton");
     button.addEventListener('click', startScript);
     document.getElementById("addButton").addEventListener("click", addUrl);
+    document.getElementById("checkAll").addEventListener("click", checkAll);
+    document.getElementById("unCheckAll").addEventListener("click", unCheckAll);
     chrome.storage.sync.get(['UrlList'], function(result) {
         if(result.UrlList != null){
             urls = result.UrlList;
@@ -51,3 +53,16 @@ function addUrl(){
     }
 }
 
+function checkAll(){
+    let checkboxes = document.querySelectorAll(".urls");
+    for(let i = 0; i < checkboxes.length; i++){
+        checkboxes[i].checked = true;
+    }
+}
+
+function unCheckAll(){
+    let checkboxes = document.querySelectorAll(".urls");
+    for(let i = 0; i < checkboxes.length; i++){
+        checkboxes[i].checked = false;
+    }
+}
