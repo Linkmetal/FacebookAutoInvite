@@ -9,7 +9,7 @@ console.log("FacebookAutoInvite loaded.");
 
 function gotMessage(message, sender, sendResponse){
     console.log(message.txt);
-    if(message.txt === "start"){  
+    if(message.txt === "start"){
         maxPosts = message.maxPosts;
         urlList = message.urlList;
         getPosts();
@@ -55,17 +55,21 @@ function openPost(ind){ //open a post
 function autoInvite(p, a){
     let prevLength = p; //previous length of likers
     let actualLength = a; //actual length of likers
-    
+
     let buttons = document.querySelectorAll('._4t2a ._42ft'); //get invite buttons
     actualLength = buttons.length;
 
     for(let i = prevLength; i < actualLength; i++){
         buttons[i].scrollIntoView({block: "start", behavior: "smooth"});
-        if(buttons[i].getAttribute('ajaxify') != null && buttons[i].getAttribute('ajaxify').indexOf('invite') != -1){ //check if the button is an invite button and if its active
+      setTimeout(function () {
+        if(buttons[i].getAttribute('ajaxify') != null && //check if the button is an invite button and if its active
+          buttons[i].getAttribute('ajaxify').indexOf('invite') != -1) {
             buttons[i].click();
             invited++;
-            console.log(invited);   
+            console.log(invited);
         }
+      }, Math.floor(Math.random()*(3000-1000+1)+1000),
+        buttons, i);
     }
 
     let seeMore = document.querySelector("#reaction_profile_pager > div > a"); // get "see more" links

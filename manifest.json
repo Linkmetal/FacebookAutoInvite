@@ -1,10 +1,10 @@
 {
 	"name": "Facebook Auto Invite",
 	"options_page": "options.html",
-	"version": "1.0",
+	"version": "1.1",
 	"description": "Auto invite people who likes your page posts",
 	"permissions": ["tabs", "activeTab", "declarativeContent", "storage"],
-	"browser_action": {	
+	"browser_action": {
 		"default_popup": "popup.html"
 	},
 	"content_scripts": [
